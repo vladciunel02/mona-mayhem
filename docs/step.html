@@ -135,7 +135,8 @@
             const checkboxes = Array.from(markdown.querySelectorAll('input[type="checkbox"]'));
             if (!checkboxes.length) return;
 
-            const storageKey = `mona-mayhem-workshop-checks:${stepId}`;
+            const sanitizedStepId = encodeURIComponent(stepId);
+            const storageKey = `mona-mayhem-workshop-checks:${sanitizedStepId}`;
             let savedStates = [];
 
             try {
@@ -152,7 +153,10 @@
 
             checkboxes.forEach((checkbox, index) => {
                 checkbox.removeAttribute('disabled');
-                checkbox.setAttribute('aria-label', `Checklist item ${index + 1}`);
+                const listItem = checkbox.closest('li');
+                const itemText = listItem ? listItem.textContent.replace(/\s+/g, ' ').trim() : '';
+                const ariaLabel = itemText ? `Checklist item: ${itemText}` : `Checklist item ${index + 1}`;
+                checkbox.setAttribute('aria-label', ariaLabel);
 
                 if (typeof savedStates[index] === 'boolean') {
                     checkbox.checked = savedStates[index];
