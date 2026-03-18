@@ -166,9 +166,16 @@
         }
 
         function filterTrackContent(md) {
-            return md.replace(/<!--\s*track:(vscode|cli):start\s*-->([\s\S]*?)<!--\s*track:\1:end\s*-->/g, (match, blockTrack, content) => {
+            const filtered = md.replace(/<!--\s*track:(vscode|cli):start\s*-->([\s\S]*?)<!--\s*track:\1:end\s*-->/g, (match, blockTrack, content) => {
                 return blockTrack === currentTrack ? content : '';
             });
+
+            if (/<!--\s*track:(?:vscode|cli):(?:start|end)\s*-->/.test(filtered)) {
+                console.warn('Unmatched workshop track markers found in markdown content.');
+                return filtered.replace(/<!--\s*track:(?:vscode|cli):(?:start|end)\s*-->/g, '');
+            }
+
+            return filtered;
         }
 
         function processMarkdown(md) {
