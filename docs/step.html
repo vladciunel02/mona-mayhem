@@ -293,12 +293,18 @@
             const existingTimer = copyButtonResetTimers.get(button);
             if (existingTimer) {
                 window.clearTimeout(existingTimer);
+                copyButtonResetTimers.delete(button);
+            }
+
+            if (!stateClass) {
+                return;
             }
 
             const resetTimer = window.setTimeout(() => {
                 button.textContent = 'Copy';
                 button.setAttribute('aria-label', button.dataset.defaultAriaLabel || 'Copy code block');
                 button.classList.remove('is-copied', 'is-error');
+                copyButtonResetTimers.delete(button);
             }, COPY_BUTTON_RESET_DELAY_MS);
 
             copyButtonResetTimers.set(button, resetTimer);
@@ -309,7 +315,7 @@
             if (!markdown) return;
 
             const codeBlocks = Array.from(markdown.querySelectorAll('pre > code'));
-            codeBlocks.forEach((codeBlock, index) => {
+            codeBlocks.forEach((codeBlock) => {
                 const pre = codeBlock.parentElement;
                 if (!pre || pre.parentElement?.classList.contains('code-block-shell')) {
                     return;
@@ -324,17 +330,17 @@
                 copyButton.type = 'button';
                 copyButton.className = 'copy-code-btn';
                 copyButton.textContent = 'Copy';
-                copyButton.dataset.defaultAriaLabel = `Copy code block ${index + 1}`;
+                copyButton.dataset.defaultAriaLabel = 'Copy code block';
                 copyButton.setAttribute('aria-label', copyButton.dataset.defaultAriaLabel);
                 copyButton.setAttribute('aria-live', 'polite');
 
                 copyButton.addEventListener('click', async () => {
                     try {
                         await copyCodeText(codeBlock.textContent || '');
-                        updateCopyButtonState(copyButton, 'Copied!', 'is-copied', `Copied code block ${index + 1}`);
+                        updateCopyButtonState(copyButton, 'Copied!', 'is-copied', 'Copied code block');
                     } catch (error) {
                         console.error('Failed to copy code to clipboard:', error);
-                        updateCopyButtonState(copyButton, 'Failed', 'is-error', `Failed to copy code block ${index + 1}`);
+                        updateCopyButtonState(copyButton, 'Failed', 'is-error', 'Failed to copy code block');
                     }
                 });
 
