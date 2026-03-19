@@ -34,15 +34,20 @@ In this part you'll set up your development environment **and** teach Copilot ab
 2. Click **Code** → **Codespaces** → **Create codespace on main**
 3. Wait for the environment to boot and dependencies to install
 
-### Step 4: Run the Setup Agent
+### Step 4: Install Dependencies and Start the App
 
-1. Open the **Chat** panel and type:
+1. Open the integrated terminal in your repository.
+2. Install dependencies:
 
+   ```bash
+   npm install
    ```
-   /setup
-   ```
 
-2. The agent will detect your environment, install dependencies, and start the dev server automatically.
+3. Start the app:
+
+   ```bash
+   npm run dev
+   ```
 
 > ✅ **App is running in your browser!**
 <!-- track:vscode:end -->
@@ -150,24 +155,12 @@ Open **Copilot Chat** in **Ask mode** and try these prompts:
 <!-- track:vscode:end -->
 
 <!-- track:cli:start -->
-### Task 1: Initialize Repository Instructions
+### Task 1: Review Repository Instructions
 
-1. In your Copilot CLI session, initialize Copilot's repo-aware files:
-
-   ```
-   /init
-   ```
-
-   You can also run `copilot init` from a regular shell if you prefer a one-shot command.
-
-2. Ask Copilot to keep the instructions concise and workshop-friendly:
-
-   ```
-   Create a short repository instructions file for this Astro project. Put the mandatory development checklist at the top, include build and dev commands, and keep the guidance specific to this repo's retro arcade theme.
-   ```
-
-3. Review the proposed file changes before approving them.
-4. Commit the resulting instructions file.
+1. Open `.github/copilot-instructions.md` and review the repo-specific guidance that's already included.
+2. Confirm it covers the mandatory development checklist, build and dev commands, and the retro arcade theme.
+3. If you want to personalize it for your own repo, ask Copilot for a concise update and review the proposed changes before approving them.
+4. Commit the instructions file only if you changed it.
 
 > **Result:** Future CLI sessions automatically inherit repository-specific instructions from files like `.github/copilot-instructions.md` or `AGENTS.md`.
 
