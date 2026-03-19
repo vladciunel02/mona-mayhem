@@ -45,6 +45,8 @@ Before writing any code, let's use Copilot's planning workflows to think through
 
 ## Task 2: Test the API
 
+> **⚠️ Not seeing changes?** If the dev server doesn't pick up the new route, stop it (`Ctrl+C`) and restart with `npm run dev`.
+
 1. Make sure your dev server is running, then test the endpoint:
 
    ```bash
@@ -68,7 +70,8 @@ Before writing any code, let's use Copilot's planning workflows to think through
    Now I need the main page. Plan a battle page for "Mona Mayhem - GitHub
    Contribution Battle Arena" with: two username inputs (Player 1 and Player 2),
    a battle button, and a results area. Use a dark theme with the Press Start 2P
-   retro gaming font from Google Fonts. Plan the HTML structure, basic styling,
+   retro gaming font from Google Fonts. Keep the UI simple — don't over-engineer
+   the layout or styling at this stage. Plan the HTML structure, basic styling,
    and how the battle interaction will work.
    ```
 
@@ -84,6 +87,8 @@ Before writing any code, let's use Copilot's planning workflows to think through
 <!-- track:cli:end -->
 
 ## Task 4: Verify the Scaffold
+
+> **⚠️ Not seeing changes?** If the page doesn't look right or hasn't updated, stop the dev server (`Ctrl+C`) and restart with `npm run dev`, then refresh your browser.
 
 1. Open http://localhost:4321 in your browser.
 2. You should see:

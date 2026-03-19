@@ -43,6 +43,8 @@ After the changes land, use `/diff` to review the styling changes before you app
 
 ## Task 3: Fine-Tune the Vibes
 
+> **⚠️ Not seeing changes?** If the new theme or animations aren't showing up, stop the dev server (`Ctrl+C`) and restart with `npm run dev`, then do a hard refresh (`Ctrl+Shift+R`) in your browser.
+
 Keep the browser preview open and iterate on the design. Try prompts like:
 
 > The scanline effect is too strong, reduce opacity to 0.03

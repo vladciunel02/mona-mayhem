@@ -41,6 +41,8 @@ This part is where Copilot goes from planner to implementer. Instead of writing 
 
 ## Task 2: Test the Battle
 
+> **⚠️ Not seeing changes?** If the battle page hasn't updated, stop the dev server (`Ctrl+C`) and restart with `npm run dev`, then refresh your browser.
+
 1. Enter `octocat` and `torvalds` as the two usernames, then click **Battle**.
 2. You should see both contribution graphs rendered side by side with colored grids.
 3. Test error cases:

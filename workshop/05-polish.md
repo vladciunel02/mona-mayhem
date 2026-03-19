@@ -88,6 +88,8 @@ Review the findings, fix anything you agree with, then run `/diff` again so you'
 ## Task 4: Verify Everything
 <!-- track:cli:end -->
 
+> **⚠️ Not seeing changes?** If any of the polish updates aren't showing up, stop the dev server (`Ctrl+C`) and restart with `npm run dev`, then do a hard refresh (`Ctrl+Shift+R`) in your browser.
+
 Run through these test scenarios to make sure everything works:
 
 | Test | Expected Result |
